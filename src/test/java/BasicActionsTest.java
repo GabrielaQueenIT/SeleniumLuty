@@ -23,22 +23,26 @@ public class BasicActionsTest {
         WebElement username = driver.findElement(By.xpath("//input[@name='username']"));
         username.clear();
         username.sendKeys("Gabrysia");
-        username.sendKeys(Keys.TAB);
-        WebElement checkbox = driver.findElement(By.xpath("//*[@type='checkbox']"));
-        checkbox.click();
-        WebElement radio = driver.findElement(By.xpath("//input[@value ='female']"));
-        radio.click();
-
-        WebElement selectCar = driver.findElement(By.xpath("//select"));
-        Select cars = new Select(selectCar);
-        cars.selectByVisibleText("Saab");
-
-        List <WebElement> options = cars.getOptions();
-        for (WebElement option : options) {
-            System.out.println(option.getText());
-        }
-
-
+        System.out.println(username.getAttribute("value"));
+//        username.sendKeys(Keys.TAB);
+//        WebElement checkbox = driver.findElement(By.xpath("//*[@type='checkbox']"));
+//        checkbox.click();
+//        WebElement radio = driver.findElement(By.xpath("//input[@value ='female']"));
+//        radio.click();
+//
+//        WebElement selectCar = driver.findElement(By.xpath("//select"));
+//        Select cars = new Select(selectCar);
+//        cars.selectByVisibleText("Saab");
+//
+//        List <WebElement> options = cars.getOptions();
+//        for (WebElement option : options) {
+//            System.out.println(option.getText());
+//        }
+//
+//        SelectCheck check = new SelectCheck();
+//        System.out.println(check.checkOption("Audi", selectCar));
+//        System.out.println(check.checkOption("Mazda", selectCar));
+//
 
 
 
