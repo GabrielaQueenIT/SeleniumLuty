@@ -1,8 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
@@ -24,26 +21,33 @@ public class BasicActionsTest {
         username.clear();
         username.sendKeys("Gabrysia");
         System.out.println(username.getAttribute("value"));
-//        username.sendKeys(Keys.TAB);
-//        WebElement checkbox = driver.findElement(By.xpath("//*[@type='checkbox']"));
-//        checkbox.click();
-//        WebElement radio = driver.findElement(By.xpath("//input[@value ='female']"));
-//        radio.click();
-//
-//        WebElement selectCar = driver.findElement(By.xpath("//select"));
-//        Select cars = new Select(selectCar);
-//        cars.selectByVisibleText("Saab");
-//
-//        List <WebElement> options = cars.getOptions();
-//        for (WebElement option : options) {
-//            System.out.println(option.getText());
-//        }
-//
-//        SelectCheck check = new SelectCheck();
-//        System.out.println(check.checkOption("Audi", selectCar));
-//        System.out.println(check.checkOption("Mazda", selectCar));
-//
+        username.sendKeys(Keys.ENTER);
+        Alert firstAlert = driver.switchTo().alert();
+        firstAlert.accept();
+        driver.switchTo().alert().accept();
 
+
+        WebElement checkbox = driver.findElement(By.xpath("//*[@type='checkbox']"));
+        checkbox.click();
+        WebElement radio = driver.findElement(By.xpath("//input[@value ='female']"));
+        radio.click();
+
+        WebElement selectCar = driver.findElement(By.xpath("//select"));
+        Select cars = new Select(selectCar);
+        cars.selectByVisibleText("Saab");
+
+        List <WebElement> options = cars.getOptions();
+        for (WebElement option : options) {
+            System.out.println(option.getText());
+        }
+
+        SelectCheck check = new SelectCheck();
+        System.out.println(check.checkOption("Audi", selectCar));
+        System.out.println(check.checkOption("Mazda", selectCar));
+
+
+        WebElement para = driver.findElement(By.cssSelector(".topSecret"));
+        System.out.println(para.getAttribute("textContent"));
 
 
     }
