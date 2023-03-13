@@ -21,17 +21,16 @@ public class FirstTest extends BasePage {
     WebDriver driver;
     WebElement para;
 
-    @Test @Ignore
+    @Test
     public void firstTest() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = DriverFactory.getDriver();
         driver.get("https://testeroprogramowania.github.io/selenium/wait2.html");
         driver.findElement(By.id("clickOnMe")).click();
         waitForElementToExist(By.cssSelector("p"));
 
         para = driver.findElement(By.cssSelector("p"));
 
-        Assert.assertEquals(para.isDisplayed(), true );
+        Assert.assertEquals(para.isDisplayed(), false );
         Assert.assertTrue(para.isDisplayed(), "Element is not displayed");
         Assert.assertTrue(para.getText().startsWith("Dopiero"));
         Assert.assertFalse(para.getText().startsWith("Pojawiłek"));
@@ -83,3 +82,5 @@ public class FirstTest extends BasePage {
         }));
     }
 }
+
+//
