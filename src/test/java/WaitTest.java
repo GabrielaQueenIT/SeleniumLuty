@@ -3,17 +3,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-
 public class WaitTest {
 
     WebDriver driver;
@@ -41,9 +33,23 @@ public class WaitTest {
     public void waitForElementToExist(By locator) {
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(new Function<WebDriver, Boolean>() {
-            @Override
-            public Boolean apply(WebDriver driver) {
+        //własny warunek - tworze funckje
+//        wait.until(new Function<WebDriver, Boolean>() {
+//            @Override
+//            public Boolean apply(WebDriver driver) {
+//                List<WebElement> elements = driver.findElements(locator);
+//                if(elements.size()>0) {
+//                    System.out.println("Element jest na stronie");
+//                    return true;
+//                } else {
+//                    System.out.println("Elementu nie ma na stronie");
+//                    return false;
+//                }
+//            }
+//        });
+
+// własny warunek za pomocą lambdy:
+        wait.until((driver -> {
                 List<WebElement> elements = driver.findElements(locator);
                 if(elements.size()>0) {
                     System.out.println("Element jest na stronie");
@@ -52,8 +58,7 @@ public class WaitTest {
                     System.out.println("Elementu nie ma na stronie");
                     return false;
                 }
-            }
-        });
 
+        }));
     }
 }
